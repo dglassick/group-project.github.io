@@ -1,16 +1,17 @@
 $(document).ready(function () { // DocRdy start
 
-	$( "myDataTable" ).empty();
+	
 
 	$('.mySearchBtn').click(function (e) {
 		
 		e.preventDefault();
 		
-
+		$(".myDataTable tbody").empty()		//$("")
 
 		//alert("Handler for .click() called.");
 
 		let country = $('.myInputCountry').val();
+
 		console.log(country);
 
 		var settings = {
