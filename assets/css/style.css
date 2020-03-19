@@ -1,6 +1,13 @@
 body{
     
 }
+
+#container-for-content {
+    width: 85%;
+    max-width: 85%;
+    margin: 0 auto;
+}
+
 .header{
     max-width: 768px;
     margin: 0 auto;
