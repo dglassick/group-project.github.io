@@ -1,17 +1,21 @@
+var states = [];
+
+
+
 $(document).ready(function () { // DocRdy start
 
-	
+	$( "myDataTable" ).empty();
 
 	$('.mySearchBtn').click(function (e) {
 		
 		e.preventDefault();
-		
-		$(".myDataTable tbody").empty()		//$("")
+        
+        $(".myDataTable tbody").empty()
+
 
 		//alert("Handler for .click() called.");
 
 		let country = $('.myInputCountry').val();
-
 		console.log(country);
 
 		var settings = {
@@ -33,38 +37,42 @@ $(document).ready(function () { // DocRdy start
 			let province = results.data.covid19Stats;
 			//console.log(province);
 
-			let csvDataDump = [];
-
 
 			function getResults() { //get results func starts
 
 
 				for (let i = 0; i < province.length; i++) {
 
-					let state = province[i].province;
-
+                    let state = province[i].province;
 					let number = i + 1;
-					let confirmed = province[i].confirmed;
+                    let confirmed = province[i].confirmed;
 					let deaths = province[i].deaths;
-					let recovered = province[i].recovered;
+                    let recovered = province[i].recovered;
+                    
+                    let obj = {
+                        state : state, 
+                        intensity : confirmed,
+                        deaths : deaths, 
+                        recovered : recovered
+                    }
+                    states.push(obj)
 
 					$('.myDataTable').append('<tr><td>' + number + '</td> <td>' + state + '</td> <td>' + confirmed + '</td><td>' + deaths + '</td>  <td>' + recovered + '</td>  </tr>');
-
-					csvDataDump = 
 
 				}
 
 			} //get results func end
 			getResults();
+        
+            for (let i = 0; i < states.length; i++){
+                console.log(states[i]);
+            }
+            
+        });
+        
+
+    });
 
 
 
-
-		});
-
-	});
-
-
-}); // DocRdy end
-
-
+});
