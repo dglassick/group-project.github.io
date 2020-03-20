@@ -1,27 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>D3: Loading GeoJSON data and generating SVG paths</title>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <style type="text/css">
-      /* No style rules here yet */
-body,html{
-    margin: 0;
-    padding: 0;
-    font-family: "Arial", sans-serif;
-    font-size: 11px;
-    text-align: center;
-  }
-/*
-#chart{
-    background-color: #F5F2EB;
-    border: 1px solid #CCC;
-  }   */
-    </style>
-  </head>
-  <body>
-    <script type="text/javascript">
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> HEAT MAP </title>
+    </head>
+    <body>
+        <div id='container' style='position: relative; height: 852px'>
+            <canvas id="heatMap" width = "1472" height = "852" style="position:absolute; left: 0; top: 0"></canvas>
+        </div>
+        <img  id="map" src="./assets/map.jpg" style="display:none" alt="">
+        <script  src="./node_modules/heatmap.js/build/heatmap.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            
+            this is the code for heatmap
+            const canvas = document.getElementById('heatMap');
+            const ctx = canvas.getContext('2d');
+            const image = document.getElementById('map');
+            console.log(image)
+            function drawImageActualSize() {
+              // Use the intrinsic size of image in CSS pixels for the canvas element
+              canvas.width = this.naturalWidth;
+              canvas.height = this.naturalHeight;
+              ctx.drawImage(image, 0, 0, this.width, this.height);
+            }
+            image.onload = function(){
+                console.log("loaded")
+                drawImageActualSize()
+            }
+            //image.onload = drawImageActualSize
+            var heatmap = h337.create({
+                container: document.getElementById('container'),
+                radius: 10,
+                maxOpacity: .5,
+                minOpacity: 0,
+                blur: .75,
+            });
+            heatmap.setData({
+              max: 5,
+              data: [
+                    { x: 9, y: 15, value: 5},
+                    { x: 10, y: 15, value: 5},
+                    { x: 11, y: 15, value: 5},
+                    { x: 12, y: 15, value: 5},
+                    { x: 13, y: 15, value: 5},
+                    { x: 9, y: 16, value: 5},
+                    { x: 10, y: 16, value: 5},
+                    { x: 11, y: 16, value: 5},
+                ]
+            });
+            heatmap.repaint()
+
+            code ends here for heatmap
+        </script>
+    </body>
+</html>
+
+
+
       //Width and height
       var w = 500;
       var h = 300;
@@ -116,6 +151,5 @@ body,html{
 
 })
 
-    </script>
-  </body>
-</html>
+
+});
