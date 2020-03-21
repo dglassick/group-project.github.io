@@ -4,19 +4,26 @@ var states = [];
 
 $(document).ready(function () { // DocRdy start
 
-	$( "myDataTable" ).empty();
+	let country = "";
+	let state = "";
+	let stateID = [];
+	let province = "";
+	let confirmed = [];
+	let deaths = [];
+	let recovered = [];
+	let confirmedArray = [];
+
+
+
+	$("myDataTable").empty();
 
 	$('.mySearchBtn').click(function (e) {
-		
+
 		e.preventDefault();
-        
-        $(".myDataTable tbody").empty()
 
+		$(".myDataTable tbody").empty();
 
-		//alert("Handler for .click() called.");
-
-		let country = $('.myInputCountry').val();
-		console.log(country);
+		country = $('.myInputCountry').val();
 
 		var settings = {
 			"async": true,
@@ -32,9 +39,9 @@ $(document).ready(function () { // DocRdy start
 		$.ajax(settings).done(function (response) {
 			//console.log(response);
 			let results = response;
-			//console.log(results);
+			//console.log("Results is: " + results);
 
-			let province = results.data.covid19Stats;
+			province = results.data.covid19Stats;
 			//console.log(province);
 
 
@@ -43,19 +50,23 @@ $(document).ready(function () { // DocRdy start
 
 				for (let i = 0; i < province.length; i++) {
 
-                    let state = province[i].province;
+					state = province[i].province;
 					let number = i + 1;
-                    let confirmed = province[i].confirmed;
-					let deaths = province[i].deaths;
-                    let recovered = province[i].recovered;
-                    
-                    let obj = {
-                        state : state, 
-                        intensity : confirmed,
-                        deaths : deaths, 
-                        recovered : recovered
-                    }
-                    states.push(obj)
+					confirmed = province[i].confirmed;
+					deaths = province[i].deaths;
+					recovered = province[i].recovered;
+
+					let obj = {
+						state: state,
+						intensity: confirmed,
+						deaths: deaths,
+						recovered: recovered
+					}
+					states.push(obj)
+					stateID.push(states[i].state);
+					confirmedArray.push(province[i].confirmed);
+
+
 
 					$('.myDataTable').append('<tr><td>' + number + '</td> <td>' + state + '</td> <td>' + confirmed + '</td><td>' + deaths + '</td>  <td>' + recovered + '</td>  </tr>');
 
@@ -63,16 +74,39 @@ $(document).ready(function () { // DocRdy start
 
 			} //get results func end
 			getResults();
-        
-            for (let i = 0; i < states.length; i++){
-                console.log(states[i]);
-            }
-            
-        });
-        
 
-    });
+			for (let i = 0; i < states.length; i++) {
+				//console.log("states[i] is " + states[i]);
+			}
 
+		});
+
+		//chart start https://www.chartjs.org/docs/latest/charts/bar.html
+		$("myDataTable").empty();
+
+		function mychart() {  
+
+			let countryLabel = country; //country name
+
+
+			let dataChart = new Chart(myChart, {
+				type: 'horizontalBar',
+				data: {
+					labels: stateID,
+					datasets: [{
+						label: countryLabel,
+						data:confirmedArray,
+						backgroundColor: "Grey"
+					}]
+				},
+				options: {}
+			})
+			//chart end
+		} mychart();
+	
+
+
+	});
 
 
 });
