@@ -10,9 +10,11 @@
         integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="./assets/js/map.js"></script>
 </head>
 
 <body>
+
 
     <style>
         .custom-restricted-width {
@@ -23,7 +25,7 @@
         }
     </style>
 
-    <div class="pure-menu custom-restricted-width">
+    <div class="pure-menu custom-restricted-width myMenu">
         <span class="pure-menu-heading">COVID-19 Tracker Homepage</span>
 
         <ul class="pure-menu-list">
@@ -43,55 +45,81 @@
 
         <div class="content">
 
-            <h2 class="content-subhead">Main title</h2>
-            <p>Lorem ipsum dolor sit amet tempor incididunt ut laboreet dolore magna aliqua. </p><br>
+            <div class="pure-g">
 
-            <form class="pure-form">
-                <input type="text" class="pure-input-rounded myInputCountry">
-                <button type="submit" class="pure-button mySearchBtn">Search</button><br>
-            </form><br>
+                <div class="pure-u-1-12"></div>
 
-            <h2 class="content-subhead">Coronavirus Disease (COVID-19) Information:</h2>
+                <div class="pure-u-5-12">
+
+                    <h2 class="content-subhead">Main title</h2>
+                    <p>Lorem ipsum dolor sit amet tempor incididunt ut laboreet dolore magna aliqua. </p><br>
+
+                    <form class="pure-form">
+                        <input type="text" class="pure-input-rounded myInputCountry">
+                        <button type="submit" class="pure-button mySearchBtn">Search</button><br>
+                    </form><br>
+
+                </div>
+
+                <div class="pure-u-1-12"></div>
+            </div>
 
             <div class="pure-g">
 
-                <div class="pure-u-1-1">
-                    <table class="pure-table myDataTable">
-
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>State/Province</th>
-                                <th>Confirmed</th>
-                                <th>Deaths</th>
-                                <th>Recovered</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            
-                        </tbody>
-                    </table><br>
+                <div class="pure-u-1-12">
+                    
                 </div>
-
-                <div class="pure-u-1-1">
-                    <table class="pure-table myChart1">
-                        <div class=myChart1>
-                            <canvas id='myChart' width="250px" height="150px">
-                                <p>testData</p>
-                            </canvas>
-                        </div><br>
+                <div class="pure-u-5-12">
+                    <h2 class="content-subhead">Coronavirus Disease (COVID-19) Information:</h2>
                 </div>
+                <div class="pure-u-1-12">
+                    
+                </div>
+            </div>
+        </div>
 
-    
+
+        <div class="pure-g">
+            <div class="pure-u-1-12"></div>
+
+
+            <div class="pure-u-5-12 dataContainer">
+                <table class="pure-table myDataTable">
+
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>State/Province</th>
+                            <th>Confirmed</th>
+                            <th>Deaths</th>
+                            <th>Recovered</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+                </table><br>
             </div>
 
+            <div class="pure-u-5-12 dataContainer">
+                <table class="pure-table myChart1">
+                    <div class=myChart1>
+                        <canvas id='myChart'>
+                            <p>testData</p>
+                        </canvas>
+                    </div><br>
+            </div>
+
+            <div class="pure-u-1-12"></div>
+
         </div>
+
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="./assets/js/map.js"></script>
     <script>
         let myChart = document.getElementById('myChart').getContext('2d');
     </script>
