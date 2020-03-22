@@ -15,11 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		let confirmedArray = [];
 
 
-
-	
-
-
-
 		$("myDataTable").empty();
 
 		$('.mySearchBtn').click(function (e) {
