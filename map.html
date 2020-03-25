@@ -114,9 +114,7 @@
                           recovered: recovered
                         }
                         states.push(obj);
-                        $(".myDataTable tbody").empty();
-            
-                        $('.myDataTable').append('<tr><td>' + number + '</td> <td>' + state + '</td> <td>' + confirmed + '</td><td>' + deaths + '</td>  <td>' + recovered + '</td>  </tr>');
+                        
                       }
             
                       console.log(states);
@@ -184,7 +182,7 @@
                       .range(d3.schemePuOr[9]);
                     console.log(color);
 
-                    //d3.csv("us-cities-agriculture.csv", function(data){
+                    //d3.csv("3-21-2020.csv", function(data){
 
                     //color.domain([ d3.min(data, function(d){ return d.value; }),
                     //d3.max(data, function(d){ return d.value; })
