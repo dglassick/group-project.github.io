@@ -10,7 +10,6 @@
         integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script src="./assets/js/map.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -150,7 +149,7 @@
                     //Width and height
                     var w = 500;
                     var h = 300;
-            
+                  
                     
                     var margin = {
                       top: 60,
@@ -184,6 +183,12 @@
                     var color = d3.scaleQuantile()
                       .range(d3.schemePuOr[9]);
                     console.log(color);
+
+                    //d3.csv("us-cities-agriculture.csv", function(data){
+
+                    //color.domain([ d3.min(data, function(d){ return d.value; }),
+                    //d3.max(data, function(d){ return d.value; })
+                    //]);
             
                     color.domain([d3.min(states, function (d) { return d.intensity; }),
                     d3.max(states, function (d) { return d.intensity; })
@@ -230,7 +235,7 @@
             
                           if(value){
                           //If value exists
-                          console.log(color(value));
+                          //console.log(color(value));
                           return color(value);
                         } else {
                           // If value is undefined
@@ -245,7 +250,7 @@
             
                     });
                   }
-                });
+                
             
             
             
