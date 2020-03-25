@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			e.preventDefault();
 
 			country = $('.myInputCountry').val();
+			console.log(country);
+
 
 			var settings = {
 				"async": true,
@@ -30,16 +32,19 @@ document.addEventListener('DOMContentLoaded', function () {
 				"method": "GET",
 				"headers": {
 					"x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
-					"x-rapidapi-key": "209b88513bmshbc9ff320e04d9e1p1f5294jsnc0b4d120644a"
+					"x-rapidapi-key": "f8c62c6da0msh66a624b29081a48p18af92jsnc6d3dfbee09f"
 				}
 			}
 
-			$(".myDataTable").empty();
+
+
+			// $(".myDataTable").empty();
+			$(".myDataTable > tr").remove();
 
 			$.ajax(settings).done(function (response) {
 				//console.log(response);
 				let results = response;
-				//console.log("Results is: " + results);
+				console.log(response);
 
 				province = results.data.covid19Stats;
 				//console.log(province);
@@ -65,6 +70,10 @@ document.addEventListener('DOMContentLoaded', function () {
 						states.push(obj)
 						stateID.push(states[i].state);
 						confirmedArray.push(province[i].confirmed);
+
+						//console.log(province)
+
+						//console.log(state)
 
 
 
@@ -102,40 +111,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				
 
 			});
-
-
-
-
-			//chart start https://www.chartjs.org/docs/latest/charts/bar.html
-			//$(".myDataTable").empty();
-			
-			// $(".myDataTable").ready(function() {
-			// 	// auto refresh page after 1 second
-			// 	setInterval('refreshPage()', 1000);
-			// });
-
-			// function mychart() {
-
-			// 	let countryLabel = country; //country name
-
-
-			// 	let dataChart = new Chart(myChart, {
-			// 		type: 'horizontalBar',
-			// 		data: {
-			// 			labels: stateID,
-			// 			datasets: [{
-			// 				label: countryLabel,
-			// 				data: confirmedArray,
-			// 				backgroundColor: "Grey"
-			// 			}]
-			// 		},
-			// 		options: {}
-			// 	})
-			// 	//chart end
-			// }
-			// mychart();
-
-	
 
 
 
