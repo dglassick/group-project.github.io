@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
 
 	var states = [];
@@ -119,5 +120,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	});
 	
-
-});
