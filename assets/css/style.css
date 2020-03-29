@@ -50,4 +50,13 @@ p{
 .covid-19Image{
     margin: 0 auto;
     padding: 1em;
+
 };
+.myMenu{
+    background-color: aqua;
+}
+
+.dataContainer{
+    background-color: #F4F4F4;
+}
+
