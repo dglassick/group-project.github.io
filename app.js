@@ -103,7 +103,7 @@ $(document).ready( function(){
                     if (dataState === jsonState) {
                         //Copy the data value into the JSON
                         // basically creating a new value column in JSON data
-                        json.features[n].properties.value = dataValue;
+                        json.feature[n].properties.value = dataValue;
                         console.log("change is", json.features[n])
 
                         console.log(dataState, jsonState)
@@ -115,7 +115,7 @@ $(document).ready( function(){
                     }
                 };
             }
-            console.log(json.features);
+            // console.log(json.features);
 
 
             var max_area = d3.max( states_list_confirmed, function(d) { return d.confirmed_total});
